@@ -55,6 +55,10 @@ sendUserNameToServer = True
 while not clientStillConnected:
     try:
         sys.stdout.flush()
+        if not sendUserNameToServer:
+            sys.stdout.write(args.userName + ": ")
+        sys.stdout.flush()
+
         # Wait for input from stdin & socket
         inputready, outputready, exceptrdy = select.select([0, client_socket_created], [], [], 600)
 
